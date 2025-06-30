@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BT10 LRCMAKER - K-pop Roman Lyrics</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function searchSongs() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const songs = document.querySelectorAll("li");
+      songs.forEach(song => {
+        song.style.display = song.textContent.toLowerCase().includes(input) ? "list-item" : "none";
+      });
+    }
+  </script>
 </head>
 <body class="bg-gray-900 text-white font-sans">
   <header class="bg-gradient-to-r from-purple-500 to-pink-500 p-6 shadow-lg">
@@ -20,33 +28,51 @@
     <a href="#skz" class="text-white hover:text-pink-400">Stray Kids</a>
   </nav>
 
+  <div class="p-6">
+    <input id="search" type="text" placeholder="Search songs..." class="w-full p-2 rounded bg-gray-800 text-white" oninput="searchSongs()">
+  </div>
+
   <main class="p-6 space-y-12">
     <section id="bts">
       <h2 class="text-3xl font-semibold text-pink-400">BTS</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/BTS_logo.svg/800px-BTS_logo.svg.png" alt="BTS Logo" class="h-20 mb-2">
       <ul class="list-disc ml-6">
-        <li><a href="lrc/bts/dynamite.lrc" class="text-blue-300 hover:underline">Dynamite.lrc</a></li>
+        <li><a href="/lrc/bts/dynamite.lrc" class="text-blue-300 hover:underline">Dynamite.lrc</a> <audio controls src="/lrc/bts/dynamite.mp3" class="inline ml-2"></audio></li>
       </ul>
     </section>
 
     <section id="blackpink">
       <h2 class="text-3xl font-semibold text-pink-400">BLACKPINK</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blackpink_logo.svg/1280px-Blackpink_logo.svg.png" alt="BLACKPINK Logo" class="h-20 mb-2">
       <ul class="list-disc ml-6">
-        <li><a href="lrc/blackpink/pinkvenom.lrc" class="text-blue-300 hover:underline">Pink Venom.lrc</a></li>
+        <li><a href="/lrc/blackpink/pinkvenom.lrc" class="text-blue-300 hover:underline">Pink Venom.lrc</a> <audio controls src="/lrc/blackpink/pinkvenom.mp3" class="inline ml-2"></audio></li>
       </ul>
     </section>
 
     <section id="ive">
       <h2 class="text-3xl font-semibold text-pink-400">IVE</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/IVE_logo.svg/1200px-IVE_logo.svg.png" alt="IVE Logo" class="h-20 mb-2">
       <ul class="list-disc ml-6">
-        <li><a href="lrc/ive/eleven.lrc" class="text-blue-300 hover:underline">ELEVEN.lrc</a></li>
+        <li><a href="/lrc/ive/eleven.lrc" class="text-blue-300 hover:underline">ELEVEN.lrc</a> <audio controls src="/lrc/ive/eleven.mp3" class="inline ml-2"></audio></li>
       </ul>
     </section>
 
     <section id="skz">
       <h2 class="text-3xl font-semibold text-pink-400">Stray Kids</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Stray_Kids_logo.svg/1280px-Stray_Kids_logo.svg.png" alt="Stray Kids Logo" class="h-20 mb-2">
       <ul class="list-disc ml-6">
-        <li><a href="lrc/skz/thunderous.lrc" class="text-blue-300 hover:underline">Thunderous.lrc</a></li>
+        <li><a href="/lrc/skz/thunderous.lrc" class="text-blue-300 hover:underline">Thunderous.lrc</a> <audio controls src="/lrc/skz/thunderous.mp3" class="inline ml-2"></audio></li>
       </ul>
+    </section>
+
+    <section id="upload">
+      <h2 class="text-3xl font-semibold text-pink-400">Upload Your Lyrics (Admin Only)</h2>
+      <p class="text-gray-400">*Only the site owner should use this form — backend not yet implemented*</p>
+      <form class="mt-4 bg-gray-800 p-4 rounded">
+        <label class="block mb-2">Select LRC File:</label>
+        <input type="file" class="mb-4 p-2 rounded bg-gray-700 text-white">
+        <button class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded">Upload</button>
+      </form>
     </section>
   </main>
 
